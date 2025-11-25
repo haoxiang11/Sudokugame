@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>数独游戏 - 响应式设计</title>
+    <title>数独游戏 - 手机优化版</title>
     <style>
         :root {
             --primary-color: #3498db;
@@ -13,10 +13,10 @@
             --light-bg: #f5f5f5;
             --dark-text: #333;
             --light-text: #fff;
-            --cell-size: min(7vw, 40px);
-            --button-size: min(9vw, 50px);
-            --font-size-normal: min(3.5vw, 16px);
-            --font-size-large: min(4.5vw, 20px);
+            --cell-size: min(9vw, 45px);
+            --button-size: min(10vw, 50px);
+            --font-size-normal: min(4vw, 18px);
+            --font-size-large: min(5vw, 22px);
             --padding-normal: min(3vw, 15px);
             --padding-small: min(2vw, 10px);
         }
@@ -36,7 +36,7 @@
             background-color: var(--light-bg);
             color: var(--dark-text);
             line-height: 1.6;
-            padding: var(--padding-normal);
+            padding: var(--padding-small);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -46,7 +46,7 @@
         
         .container {
             width: 100%;
-            max-width: 800px;
+            max-width: 500px;
             background-color: white;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -54,8 +54,6 @@
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            height: 95vh;
-            max-height: 800px;
         }
         
         /* 开始页面样式 */
@@ -63,8 +61,6 @@
             display: flex;
             flex-direction: column;
             padding: var(--padding-normal);
-            flex: 1;
-            overflow: hidden;
         }
         
         .start-screen {
@@ -75,7 +71,6 @@
             color: var(--secondary-color);
             font-size: var(--font-size-large);
             margin-bottom: 15px;
-            margin-top: 10px;
         }
         
         .rules {
@@ -85,7 +80,7 @@
             background-color: #f8f9fa;
             border-radius: 8px;
             font-size: var(--font-size-normal);
-            flex-grow: 1;
+            max-height: 50vh;
             overflow-y: auto;
         }
         
@@ -125,7 +120,6 @@
         
         .btn:hover {
             background-color: #2980b9;
-            transform: translateY(-2px);
         }
         
         .btn-secondary {
@@ -152,7 +146,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         
         .home-btn {
@@ -175,14 +169,14 @@
         .game-info {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             font-size: var(--font-size-normal);
         }
         
         .difficulty-selector {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             display: flex;
-            gap: 8px;
+            gap: 6px;
         }
         
         .difficulty-btn {
@@ -205,19 +199,10 @@
             border-color: var(--primary-color);
         }
         
-        .game-content {
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-            overflow: hidden;
-        }
-        
         .board-container {
             display: flex;
             justify-content: center;
             margin-bottom: 15px;
-            flex: 1;
-            min-height: 0;
         }
         
         .sudoku-board {
@@ -229,9 +214,8 @@
             border-radius: 5px;
             overflow: hidden;
             width: 100%;
-            max-width: 400px;
+            max-width: 95vw;
             aspect-ratio: 1 / 1;
-            align-self: center;
         }
         
         .cell {
@@ -323,7 +307,6 @@
         
         .number-btn:hover, .action-btn:hover {
             background-color: #2980b9;
-            transform: translateY(-2px);
         }
         
         .action-btn {
@@ -337,12 +320,10 @@
         .action-btn:disabled {
             background-color: #95a5a6;
             cursor: not-allowed;
-            transform: none;
         }
         
         .action-btn:disabled:hover {
             background-color: #95a5a6;
-            transform: none;
         }
         
         .game-controls {
@@ -360,12 +341,11 @@
             font-size: var(--font-size-normal);
             cursor: pointer;
             transition: all 0.3s;
-            min-height: 44px;
+            min-height: 50px;
         }
         
         .control-btn:hover {
             background-color: #1a252f;
-            transform: translateY(-2px);
         }
         
         .control-btn.hint {
@@ -392,12 +372,10 @@
         .control-btn:disabled {
             background-color: #95a5a6;
             cursor: not-allowed;
-            transform: none;
         }
         
         .control-btn:disabled:hover {
             background-color: #95a5a6;
-            transform: none;
         }
         
         .game-stats {
@@ -448,7 +426,6 @@
             margin-bottom: 15px;
             max-height: 50vh;
             overflow-y: auto;
-            flex-grow: 1;
         }
         
         .leaderboard-item {
@@ -517,16 +494,14 @@
             :root {
                 --cell-size: 45px;
                 --button-size: 50px;
-                --font-size-normal: 16px;
-                --font-size-large: 20px;
+                --font-size-normal: 18px;
+                --font-size-large: 22px;
                 --padding-normal: 20px;
                 --padding-small: 10px;
             }
             
             .container {
-                max-width: 800px;
-                height: 90vh;
-                max-height: 700px;
+                max-width: 600px;
             }
             
             .btn {
@@ -558,22 +533,18 @@
         }
         
         @media (max-width: 480px) {
-            .game-controls {
-                grid-template-columns: 1fr;
-            }
-            
             .completion-buttons {
                 flex-direction: column;
             }
             
             .container {
-                height: 95vh;
+                height: auto;
+                min-height: 100vh;
             }
         }
         
         @media (max-height: 700px) and (orientation: landscape) {
             .screen {
-                min-height: auto;
                 padding: var(--padding-small);
             }
             
@@ -587,10 +558,6 @@
             
             .leaderboard-list {
                 max-height: 30vh;
-            }
-            
-            .container {
-                height: 98vh;
             }
         }
         
@@ -650,38 +617,36 @@
                 <button class="difficulty-btn" data-difficulty="hard">困难</button>
             </div>
             
-            <div class="game-content">
-                <div class="board-container">
-                    <div class="sudoku-board" id="board">
-                        <!-- 数独棋盘将通过JavaScript生成 -->
-                    </div>
+            <div class="board-container">
+                <div class="sudoku-board" id="board">
+                    <!-- 数独棋盘将通过JavaScript生成 -->
+                </div>
+            </div>
+            
+            <div class="controls-container">
+                <div class="number-pad">
+                    <button class="number-btn" data-number="1">1</button>
+                    <button class="number-btn" data-number="2">2</button>
+                    <button class="number-btn" data-number="3">3</button>
+                    <button class="number-btn" data-number="4">4</button>
+                    <button class="action-btn" id="delete-btn">删除</button>
+                    <button class="number-btn" data-number="5">5</button>
+                    <button class="number-btn" data-number="6">6</button>
+                    <button class="number-btn" data-number="7">7</button>
+                    <button class="number-btn" data-number="8">8</button>
+                    <button class="number-btn" data-number="9">9</button>
                 </div>
                 
-                <div class="controls-container">
-                    <div class="number-pad">
-                        <button class="number-btn" data-number="1">1</button>
-                        <button class="number-btn" data-number="2">2</button>
-                        <button class="number-btn" data-number="3">3</button>
-                        <button class="number-btn" data-number="4">4</button>
-                        <button class="action-btn" id="delete-btn">删除</button>
-                        <button class="number-btn" data-number="5">5</button>
-                        <button class="number-btn" data-number="6">6</button>
-                        <button class="number-btn" data-number="7">7</button>
-                        <button class="number-btn" data-number="8">8</button>
-                        <button class="number-btn" data-number="9">9</button>
-                    </div>
-                    
-                    <div class="game-controls">
-                        <button class="control-btn hint" id="hint-btn">提示 (3/3)</button>
-                        <button class="control-btn mark" id="mark-btn">标记</button>
-                        <button class="control-btn" id="new-game-btn">新游戏</button>
-                        <button class="control-btn" id="solve-btn">解题</button>
-                    </div>
-                    
-                    <div class="game-stats">
-                        <div>已用提示: <span id="hints-used">0</span>/3</div>
-                        <div>标记模式: <span id="mark-status">关闭</span></div>
-                    </div>
+                <div class="game-controls">
+                    <button class="control-btn hint" id="hint-btn">提示 (3/3)</button>
+                    <button class="control-btn mark" id="mark-btn">标记</button>
+                    <button class="control-btn" id="new-game-btn">新游戏</button>
+                    <button class="control-btn" id="solve-btn">解题</button>
+                </div>
+                
+                <div class="game-stats">
+                    <div>已用提示: <span id="hints-used">0</span>/3</div>
+                    <div>标记模式: <span id="mark-status">关闭</span></div>
                 </div>
             </div>
         </div>
