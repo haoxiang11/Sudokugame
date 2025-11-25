@@ -114,7 +114,7 @@
             background-color: #2980b9;
         }
         
-        /* 游戏页面样式 */
+        /* 游戏页面样式 - 优化为更宽尺寸 */
         .game-screen {
             display: none;
             background-color: white;
@@ -149,12 +149,6 @@
             background-color: #f0f0f0;
         }
         
-        h1 {
-            color: #2c3e50;
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-        
         .game-info {
             display: flex;
             justify-content: space-between;
@@ -172,6 +166,9 @@
             border-radius: 5px;
             overflow: hidden;
             width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
             aspect-ratio: 1 / 1;
         }
         
@@ -180,7 +177,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             font-weight: bold;
             cursor: pointer;
             position: relative;
@@ -226,7 +223,7 @@
         }
         
         .pencil-mark {
-            font-size: 0.5rem;
+            font-size: 0.6rem;
             color: #6c757d;
             line-height: 1;
             padding: 0 1px;
@@ -234,11 +231,19 @@
             text-align: center;
         }
         
+        .game-controls-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
         .number-pad {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            grid-gap: 6px;
-            margin-bottom: 15px;
+            grid-gap: 8px;
         }
         
         .number-btn, .action-btn {
@@ -249,11 +254,11 @@
             color: white;
             border: none;
             border-radius: 5px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: bold;
             cursor: pointer;
             transition: background-color 0.2s;
-            min-height: 44px;
+            min-height: 50px;
         }
         
         .number-btn:hover, .action-btn:hover {
@@ -280,19 +285,19 @@
         .game-controls {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            grid-gap: 8px;
+            grid-gap: 10px;
         }
         
         .control-btn {
-            padding: 12px;
+            padding: 14px;
             background-color: #34495e;
             color: white;
             border: none;
             border-radius: 5px;
-            font-size: 0.9rem;
+            font-size: 1rem;
             cursor: pointer;
             transition: background-color 0.2s;
-            min-height: 44px;
+            min-height: 50px;
         }
         
         .control-btn:hover {
@@ -424,7 +429,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             font-weight: bold;
             z-index: 1;
         }
@@ -523,28 +528,26 @@
                 font-size: 1.6rem;
             }
             
-            .game-header h1 {
-                font-size: 1.3rem;
-            }
-            
             .cell {
-                font-size: 1rem;
+                font-size: 1.2rem;
             }
             
             .cell-number {
-                font-size: 1rem;
+                font-size: 1.2rem;
             }
             
             .pencil-mark {
-                font-size: 0.45rem;
+                font-size: 0.5rem;
             }
             
             .number-btn, .action-btn {
-                font-size: 1rem;
+                font-size: 1.1rem;
+                min-height: 44px;
             }
             
             .control-btn {
-                font-size: 0.85rem;
+                font-size: 0.9rem;
+                min-height: 44px;
             }
             
             .game-info, .game-stats {
@@ -566,11 +569,11 @@
         
         @media (max-width: 360px) {
             .cell {
-                font-size: 0.9rem;
+                font-size: 1rem;
             }
             
             .cell-number {
-                font-size: 0.9rem;
+                font-size: 1rem;
             }
             
             .pencil-mark {
@@ -578,7 +581,7 @@
             }
             
             .number-btn, .action-btn {
-                font-size: 0.9rem;
+                font-size: 1rem;
             }
             
             .control-btn {
@@ -651,41 +654,42 @@
     <div class="game-screen" id="game-screen">
         <div class="game-header">
             <button class="home-btn" id="home-btn">主页</button>
+            <div class="game-info">
+                <div class="timer">时间: <span id="timer">00:00</span></div>
+                <div class="mistakes">错误: <span id="mistakes">0</span>/3</div>
+            </div>
             <div style="width: 44px;"></div> <!-- 占位符，保持布局平衡 -->
-        </div>
-        
-        <div class="game-info">
-            <div class="timer">时间: <span id="timer">00:00</span></div>
-            <div class="mistakes">错误: <span id="mistakes">0</span>/3</div>
         </div>
         
         <div class="sudoku-board" id="board">
             <!-- 数独棋盘将通过JavaScript生成 -->
         </div>
         
-        <div class="number-pad">
-            <button class="number-btn" data-number="1">1</button>
-            <button class="number-btn" data-number="2">2</button>
-            <button class="number-btn" data-number="3">3</button>
-            <button class="number-btn" data-number="4">4</button>
-            <button class="action-btn" id="delete-btn">删除</button>
-            <button class="number-btn" data-number="5">5</button>
-            <button class="number-btn" data-number="6">6</button>
-            <button class="number-btn" data-number="7">7</button>
-            <button class="number-btn" data-number="8">8</button>
-            <button class="number-btn" data-number="9">9</button>
-        </div>
-        
-        <div class="game-controls">
-            <button class="control-btn hint" id="hint-btn">提示 (3/3)</button>
-            <button class="control-btn mark" id="mark-btn">标记</button>
-            <button class="control-btn" id="new-game-btn">新游戏</button>
-            <button class="control-btn" id="solve-btn">解题</button>
-        </div>
-        
-        <div class="game-stats">
-            <div>已用提示: <span id="hints-used">0</span>/3</div>
-            <div>标记模式: <span id="mark-status">关闭</span></div>
+        <div class="game-controls-container">
+            <div class="number-pad">
+                <button class="number-btn" data-number="1">1</button>
+                <button class="number-btn" data-number="2">2</button>
+                <button class="number-btn" data-number="3">3</button>
+                <button class="number-btn" data-number="4">4</button>
+                <button class="action-btn" id="delete-btn">删除</button>
+                <button class="number-btn" data-number="5">5</button>
+                <button class="number-btn" data-number="6">6</button>
+                <button class="number-btn" data-number="7">7</button>
+                <button class="number-btn" data-number="8">8</button>
+                <button class="number-btn" data-number="9">9</button>
+            </div>
+            
+            <div class="game-controls">
+                <button class="control-btn hint" id="hint-btn">提示 (3/3)</button>
+                <button class="control-btn mark" id="mark-btn">标记</button>
+                <button class="control-btn" id="new-game-btn">新游戏</button>
+                <button class="control-btn" id="solve-btn">解题</button>
+            </div>
+            
+            <div class="game-stats">
+                <div>已用提示: <span id="hints-used">0</span>/3</div>
+                <div>标记模式: <span id="mark-status">关闭</span></div>
+            </div>
         </div>
     </div>
 
