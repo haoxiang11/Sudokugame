@@ -71,6 +71,31 @@
             margin-bottom: 6px;
         }
         
+        .difficulty-selector {
+            margin: 15px 0;
+            display: flex;
+            gap: 8px;
+        }
+        
+        .difficulty-btn {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+            color: #495057;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            min-height: 44px;
+        }
+        
+        .difficulty-btn.active {
+            background-color: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+        
         .start-btn {
             padding: 12px 25px;
             background-color: #3498db;
@@ -136,31 +161,6 @@
             justify-content: space-between;
             margin-bottom: 15px;
             font-size: 0.9rem;
-        }
-        
-        .difficulty-selector {
-            margin-bottom: 15px;
-            display: flex;
-            gap: 8px;
-        }
-        
-        .difficulty-btn {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #f8f9fa;
-            color: #495057;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.2s;
-            min-height: 44px;
-        }
-        
-        .difficulty-btn.active {
-            background-color: #3498db;
-            color: white;
-            border-color: #3498db;
         }
         
         .sudoku-board {
@@ -641,6 +641,11 @@
                 <li>使用"解题"可以显示完整答案</li>
             </ul>
         </div>
+        <div class="difficulty-selector">
+            <button class="difficulty-btn active" data-difficulty="easy">简单</button>
+            <button class="difficulty-btn" data-difficulty="medium">中等</button>
+            <button class="difficulty-btn" data-difficulty="hard">困难</button>
+        </div>
         <button class="start-btn" id="start-btn">开始游戏</button>
         <button class="start-btn" id="leaderboard-btn" style="background-color: #9b59b6; margin-left: 0; margin-top: 10px;">排行榜</button>
     </div>
@@ -656,12 +661,6 @@
         <div class="game-info">
             <div class="timer">时间: <span id="timer">00:00</span></div>
             <div class="mistakes">错误: <span id="mistakes">0</span>/3</div>
-        </div>
-        
-        <div class="difficulty-selector">
-            <button class="difficulty-btn active" data-difficulty="easy">简单</button>
-            <button class="difficulty-btn" data-difficulty="medium">中等</button>
-            <button class="difficulty-btn" data-difficulty="hard">困难</button>
         </div>
         
         <div class="sudoku-board" id="board">
@@ -877,6 +876,18 @@
                 gameScreen.style.display = 'none';
                 startScreen.style.display = 'block';
                 clearInterval(timerInterval);
+            });
+            
+            // 难度按钮点击事件（在开始页面）
+            difficultyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // 更新活动按钮
+                    difficultyButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 更新难度
+                    currentDifficulty = this.dataset.difficulty;
+                });
             });
             
             // 排行榜标签切换事件
@@ -1123,21 +1134,6 @@
                             selectCell(cell);
                         }
                     }
-                });
-                
-                // 难度按钮点击事件
-                difficultyButtons.forEach(button => {
-                    button.addEventListener('click', function() {
-                        // 更新活动按钮
-                        difficultyButtons.forEach(btn => btn.classList.remove('active'));
-                        this.classList.add('active');
-                        
-                        // 更新难度
-                        currentDifficulty = this.dataset.difficulty;
-                        
-                        // 重置游戏
-                        resetGame();
-                    });
                 });
                 
                 // 数字按钮点击事件
