@@ -3,13 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>数独游戏</title>
+    <title>响应式数独游戏</title>
     <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --success-color: #2ecc71;
+            --light-bg: #f5f5f5;
+            --dark-text: #333;
+            --light-text: #fff;
+            --cell-size: min(8vw, 50px);
+            --button-size: min(10vw, 60px);
+            --font-size-normal: min(4vw, 20px);
+            --font-size-large: min(5vw, 24px);
+            --padding-normal: min(3vw, 15px);
+            --padding-small: min(2vw, 10px);
+        }
+        
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             -webkit-tap-highlight-color: transparent;
             -webkit-touch-callout: none;
             -webkit-user-select: none;
@@ -17,88 +33,113 @@
         }
         
         body {
-            background-color: #f5f5f5;
-            color: #333;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
             line-height: 1.6;
-            padding: 10px;
-            max-width: 100%;
-            margin: 0 auto;
+            padding: var(--padding-normal);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            align-items: center;
             justify-content: center;
-            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 0 auto;
         }
         
         /* 开始页面样式 */
+        .screen {
+            display: flex;
+            flex-direction: column;
+            padding: var(--padding-normal);
+            min-height: 70vh;
+        }
+        
         .start-screen {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
             text-align: center;
-            width: 100%;
         }
         
         .start-screen h1 {
-            color: #2c3e50;
-            font-size: 1.8rem;
-            margin-bottom: 15px;
+            color: var(--secondary-color);
+            font-size: var(--font-size-large);
+            margin-bottom: 20px;
+            margin-top: 10px;
         }
         
         .rules {
             text-align: left;
-            margin: 15px 0;
-            padding: 12px;
+            margin: 20px 0;
+            padding: 15px;
             background-color: #f8f9fa;
             border-radius: 8px;
-            font-size: 0.9rem;
+            font-size: var(--font-size-normal);
+            flex-grow: 1;
+            overflow-y: auto;
         }
         
         .rules h2 {
-            color: #3498db;
-            margin-bottom: 8px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
             text-align: center;
-            font-size: 1.1rem;
+            font-size: var(--font-size-normal);
         }
         
         .rules ul {
-            padding-left: 18px;
-            margin-bottom: 10px;
+            padding-left: 20px;
+            margin-bottom: 15px;
         }
         
         .rules li {
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
         
-        .start-btn {
+        .btn {
             padding: 12px 25px;
-            background-color: #3498db;
-            color: white;
+            background-color: var(--primary-color);
+            color: var(--light-text);
             border: none;
-            border-radius: 5px;
-            font-size: 1rem;
+            border-radius: 8px;
+            font-size: var(--font-size-normal);
             cursor: pointer;
-            transition: background-color 0.2s;
-            margin-top: 10px;
+            transition: all 0.3s;
+            margin: 5px;
             min-height: 44px;
-            width: 100%;
-            max-width: 200px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            width: calc(50% - 10px);
         }
         
-        .start-btn:hover {
+        .btn:hover {
             background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: #9b59b6;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #8e44ad;
+        }
+        
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
         }
         
         /* 游戏页面样式 */
         .game-screen {
             display: none;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 15px;
-            margin-bottom: 15px;
-            width: 100%;
         }
         
         .game-header {
@@ -111,9 +152,9 @@
         .home-btn {
             background: none;
             border: none;
-            font-size: 1rem;
+            font-size: var(--font-size-normal);
             cursor: pointer;
-            color: #3498db;
+            color: var(--primary-color);
             padding: 8px 12px;
             border-radius: 5px;
             transition: background-color 0.2s;
@@ -125,17 +166,11 @@
             background-color: #f0f0f0;
         }
         
-        h1 {
-            color: #2c3e50;
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-        
         .game-info {
             display: flex;
             justify-content: space-between;
             margin-bottom: 15px;
-            font-size: 0.9rem;
+            font-size: var(--font-size-normal);
         }
         
         .difficulty-selector {
@@ -155,12 +190,13 @@
             cursor: pointer;
             transition: all 0.2s;
             min-height: 44px;
+            font-size: var(--font-size-normal);
         }
         
         .difficulty-btn.active {
-            background-color: #3498db;
+            background-color: var(--primary-color);
             color: white;
-            border-color: #3498db;
+            border-color: var(--primary-color);
         }
         
         .sudoku-board {
@@ -169,10 +205,10 @@
             grid-gap: 1px;
             background-color: #333;
             border: 2px solid #333;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             border-radius: 5px;
             overflow: hidden;
-            max-width: 100%;
+            width: 100%;
             aspect-ratio: 1 / 1;
         }
         
@@ -181,11 +217,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
+            font-size: var(--font-size-large);
             font-weight: bold;
             cursor: pointer;
             position: relative;
-            min-height: 30px;
+            min-height: var(--cell-size);
         }
         
         .cell.prefilled {
@@ -228,7 +264,7 @@
         }
         
         .pencil-mark {
-            font-size: 0.5rem;
+            font-size: calc(var(--font-size-normal) * 0.6);
             color: #6c757d;
             line-height: 1;
             padding: 0 1px;
@@ -247,23 +283,24 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #3498db;
-            color: white;
+            background-color: var(--primary-color);
+            color: var(--light-text);
             border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
+            border-radius: 8px;
+            font-size: var(--font-size-large);
             font-weight: bold;
             cursor: pointer;
-            transition: background-color 0.2s;
-            min-height: 44px;
+            transition: all 0.3s;
+            min-height: var(--button-size);
         }
         
         .number-btn:hover, .action-btn:hover {
             background-color: #2980b9;
+            transform: translateY(-2px);
         }
         
         .action-btn {
-            background-color: #e74c3c;
+            background-color: var(--accent-color);
         }
         
         .action-btn:hover {
@@ -273,10 +310,12 @@
         .action-btn:disabled {
             background-color: #95a5a6;
             cursor: not-allowed;
+            transform: none;
         }
         
         .action-btn:disabled:hover {
             background-color: #95a5a6;
+            transform: none;
         }
         
         .game-controls {
@@ -287,18 +326,19 @@
         
         .control-btn {
             padding: 12px;
-            background-color: #34495e;
-            color: white;
+            background-color: var(--secondary-color);
+            color: var(--light-text);
             border: none;
-            border-radius: 5px;
-            font-size: 0.9rem;
+            border-radius: 8px;
+            font-size: var(--font-size-normal);
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: all 0.3s;
             min-height: 44px;
         }
         
         .control-btn:hover {
-            background-color: #2c3e50;
+            background-color: #1a252f;
+            transform: translateY(-2px);
         }
         
         .control-btn.hint {
@@ -325,35 +365,32 @@
         .control-btn:disabled {
             background-color: #95a5a6;
             cursor: not-allowed;
+            transform: none;
         }
         
         .control-btn:disabled:hover {
             background-color: #95a5a6;
+            transform: none;
         }
         
         .game-stats {
             display: flex;
             justify-content: space-between;
             margin-top: 10px;
-            font-size: 0.8rem;
+            font-size: calc(var(--font-size-normal) * 0.8);
             color: #6c757d;
         }
         
         /* 排行榜样式 */
         .leaderboard-screen {
             display: none;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            text-align: center;
-            width: 100%;
         }
         
         .leaderboard-screen h1 {
-            color: #2c3e50;
-            font-size: 1.8rem;
+            color: var(--secondary-color);
+            font-size: var(--font-size-large);
             margin-bottom: 15px;
+            text-align: center;
         }
         
         .leaderboard-tabs {
@@ -368,22 +405,23 @@
             background: none;
             border: none;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: var(--font-size-normal);
             transition: all 0.2s;
             min-height: 44px;
         }
         
         .leaderboard-tab.active {
-            border-bottom: 3px solid #3498db;
-            color: #3498db;
+            border-bottom: 3px solid var(--primary-color);
+            color: var(--primary-color);
             font-weight: bold;
         }
         
         .leaderboard-list {
             text-align: left;
             margin-bottom: 15px;
-            max-height: 300px;
+            max-height: 40vh;
             overflow-y: auto;
+            flex-grow: 1;
         }
         
         .leaderboard-item {
@@ -395,40 +433,6 @@
         
         .leaderboard-item:nth-child(odd) {
             background-color: #f8f9fa;
-        }
-        
-        .back-btn {
-            padding: 12px 25px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            margin-top: 10px;
-            min-height: 44px;
-            width: 100%;
-            max-width: 200px;
-        }
-        
-        .back-btn:hover {
-            background-color: #2980b9;
-        }
-        
-        /* 新增样式：数字显示区域 */
-        .cell-number {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            font-weight: bold;
-            z-index: 1;
         }
         
         /* 完成弹窗样式 */
@@ -443,12 +447,12 @@
             z-index: 1000;
             align-items: center;
             justify-content: center;
-            padding: 15px;
+            padding: var(--padding-normal);
         }
         
         .completion-content {
             background-color: white;
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 25px;
             text-align: center;
             width: 100%;
@@ -457,21 +461,21 @@
         }
         
         .completion-content h2 {
-            color: #2c3e50;
+            color: var(--secondary-color);
             margin-bottom: 12px;
-            font-size: 1.5rem;
+            font-size: var(--font-size-large);
         }
         
         .completion-content p {
             margin-bottom: 15px;
-            font-size: 1rem;
+            font-size: var(--font-size-normal);
             color: #555;
         }
         
         .completion-time {
-            font-size: 1.2rem;
+            font-size: calc(var(--font-size-large) * 1.2);
             font-weight: bold;
-            color: #3498db;
+            color: var(--primary-color);
             margin: 12px 0;
         }
         
@@ -481,133 +485,57 @@
             margin-top: 20px;
         }
         
-        .completion-btn {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 5px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            min-height: 44px;
+        /* 响应式调整 */
+        @media (min-width: 768px) {
+            :root {
+                --cell-size: 50px;
+                --button-size: 60px;
+                --font-size-normal: 18px;
+                --font-size-large: 22px;
+                --padding-normal: 20px;
+                --padding-small: 10px;
+            }
+            
+            .container {
+                max-width: 700px;
+            }
+            
+            .btn {
+                width: auto;
+                min-width: 150px;
+            }
+            
+            .btn-container {
+                justify-content: center;
+            }
         }
         
-        .completion-new-game {
-            background-color: #3498db;
-            color: white;
-        }
-        
-        .completion-new-game:hover {
-            background-color: #2980b9;
-        }
-        
-        .completion-home {
-            background-color: #95a5a6;
-            color: white;
-        }
-        
-        .completion-home:hover {
-            background-color: #7f8c8d;
-        }
-        
-        /* 移动端特定样式 */
         @media (max-width: 480px) {
-            body {
-                padding: 5px;
-                justify-content: flex-start;
+            .game-controls {
+                grid-template-columns: 1fr;
             }
             
-            .start-screen, .game-screen, .leaderboard-screen {
-                padding: 15px;
-            }
-            
-            .start-screen h1, .leaderboard-screen h1 {
-                font-size: 1.6rem;
-            }
-            
-            .game-header h1 {
-                font-size: 1.3rem;
-            }
-            
-            .cell {
-                font-size: 1rem;
-                min-height: 25px;
-            }
-            
-            .cell-number {
-                font-size: 1rem;
-            }
-            
-            .pencil-mark {
-                font-size: 0.45rem;
-            }
-            
-            .number-btn, .action-btn {
-                font-size: 1rem;
-            }
-            
-            .control-btn {
-                font-size: 0.85rem;
-            }
-            
-            .game-info, .game-stats {
-                font-size: 0.75rem;
-            }
-            
-            .completion-content {
-                padding: 20px;
-            }
-            
-            .completion-content h2 {
-                font-size: 1.3rem;
-            }
-            
-            .completion-time {
-                font-size: 1.1rem;
+            .completion-buttons {
+                flex-direction: column;
             }
         }
         
-        @media (max-width: 360px) {
-            .cell {
-                font-size: 0.9rem;
-            }
-            
-            .cell-number {
-                font-size: 0.9rem;
-            }
-            
-            .pencil-mark {
-                font-size: 0.4rem;
-            }
-            
-            .number-btn, .action-btn {
-                font-size: 0.9rem;
-            }
-            
-            .control-btn {
-                font-size: 0.8rem;
-                padding: 10px;
-            }
-        }
-        
-        /* 横屏优化 */
-        @media (max-height: 500px) and (orientation: landscape) {
-            body {
-                padding: 5px;
-                justify-content: flex-start;
-            }
-            
-            .game-screen {
-                padding: 10px;
+        @media (max-height: 700px) and (orientation: landscape) {
+            .screen {
+                min-height: auto;
+                padding: var(--padding-small);
             }
             
             .sudoku-board {
                 margin-bottom: 10px;
-                max-height: 50vh;
             }
             
-            .game-controls {
-                grid-template-columns: repeat(4, 1fr);
+            .rules {
+                max-height: 40vh;
+            }
+            
+            .leaderboard-list {
+                max-height: 30vh;
             }
         }
         
@@ -620,92 +548,98 @@
     </style>
 </head>
 <body>
-    <!-- 开始页面 -->
-    <div class="start-screen" id="start-screen">
-        <h1>数独游戏</h1>
-        <div class="rules">
-            <h2>游戏规则</h2>
-            <ul>
-                <li>数独是一个9x9的网格，分为9个3x3的小宫格</li>
-                <li>目标是用数字1-9填满整个网格</li>
-                <li>每行、每列和每个3x3小宫格都必须包含数字1-9，且不能重复</li>
-                <li>游戏开始时，部分格子已经填好数字，这些是固定数字不能更改</li>
-            </ul>
-            <h2>操作说明</h2>
-            <ul>
-                <li>点击空白格子选中它</li>
-                <li>使用数字键盘输入数字</li>
-                <li>使用"标记"功能可以在格子中添加候选数字</li>
-                <li>使用"提示"功能可以显示当前格子的正确答案（最多3次）</li>
-                <li>使用"新游戏"可以开始新的游戏</li>
-                <li>使用"解题"可以显示完整答案</li>
-            </ul>
-        </div>
-        <button class="start-btn" id="start-btn">开始游戏</button>
-        <button class="start-btn" id="leaderboard-btn" style="background-color: #9b59b6; margin-left: 0; margin-top: 10px;">排行榜</button>
-    </div>
-
-    <!-- 游戏页面 -->
-    <div class="game-screen" id="game-screen">
-        <div class="game-header">
-            <button class="home-btn" id="home-btn">主页</button>
+    <div class="container">
+        <!-- 开始页面 -->
+        <div class="screen start-screen" id="start-screen">
             <h1>数独游戏</h1>
-            <div style="width: 44px;"></div> <!-- 占位符，保持标题居中 -->
+            <div class="rules">
+                <h2>游戏规则</h2>
+                <ul>
+                    <li>数独是一个9x9的网格，分为9个3x3的小宫格</li>
+                    <li>目标是用数字1-9填满整个网格</li>
+                    <li>每行、每列和每个3x3小宫格都必须包含数字1-9，且不能重复</li>
+                    <li>游戏开始时，部分格子已经填好数字，这些是固定数字不能更改</li>
+                </ul>
+                <h2>操作说明</h2>
+                <ul>
+                    <li>点击空白格子选中它</li>
+                    <li>使用数字键盘输入数字</li>
+                    <li>使用"标记"功能可以在格子中添加候选数字</li>
+                    <li>使用"提示"功能可以显示当前格子的正确答案（最多3次）</li>
+                    <li>使用"新游戏"可以开始新的游戏</li>
+                    <li>使用"解题"可以显示完整答案</li>
+                </ul>
+            </div>
+            <div class="btn-container">
+                <button class="btn" id="start-btn">开始游戏</button>
+                <button class="btn btn-secondary" id="leaderboard-btn">排行榜</button>
+            </div>
         </div>
-        
-        <div class="game-info">
-            <div class="timer">时间: <span id="timer">00:00</span></div>
-            <div class="mistakes">错误: <span id="mistakes">0</span>/3</div>
-        </div>
-        
-        <div class="difficulty-selector">
-            <button class="difficulty-btn active" data-difficulty="easy">简单</button>
-            <button class="difficulty-btn" data-difficulty="medium">中等</button>
-            <button class="difficulty-btn" data-difficulty="hard">困难</button>
-        </div>
-        
-        <div class="sudoku-board" id="board">
-            <!-- 数独棋盘将通过JavaScript生成 -->
-        </div>
-        
-        <div class="number-pad">
-            <button class="number-btn" data-number="1">1</button>
-            <button class="number-btn" data-number="2">2</button>
-            <button class="number-btn" data-number="3">3</button>
-            <button class="number-btn" data-number="4">4</button>
-            <button class="action-btn" id="delete-btn">删除</button>
-            <button class="number-btn" data-number="5">5</button>
-            <button class="number-btn" data-number="6">6</button>
-            <button class="number-btn" data-number="7">7</button>
-            <button class="number-btn" data-number="8">8</button>
-            <button class="number-btn" data-number="9">9</button>
-        </div>
-        
-        <div class="game-controls">
-            <button class="control-btn hint" id="hint-btn">提示 (3/3)</button>
-            <button class="control-btn mark" id="mark-btn">标记</button>
-            <button class="control-btn" id="new-game-btn">新游戏</button>
-            <button class="control-btn" id="solve-btn">解题</button>
-        </div>
-        
-        <div class="game-stats">
-            <div>已用提示: <span id="hints-used">0</span>/3</div>
-            <div>标记模式: <span id="mark-status">关闭</span></div>
-        </div>
-    </div>
 
-    <!-- 排行榜页面 -->
-    <div class="leaderboard-screen" id="leaderboard-screen">
-        <h1>排行榜</h1>
-        <div class="leaderboard-tabs">
-            <button class="leaderboard-tab active" data-difficulty="easy">简单</button>
-            <button class="leaderboard-tab" data-difficulty="medium">中等</button>
-            <button class="leaderboard-tab" data-difficulty="hard">困难</button>
+        <!-- 游戏页面 -->
+        <div class="screen game-screen" id="game-screen">
+            <div class="game-header">
+                <button class="home-btn" id="home-btn">← 返回</button>
+                <h1>数独游戏</h1>
+                <div style="width: 60px;"></div> <!-- 占位符，保持标题居中 -->
+            </div>
+            
+            <div class="game-info">
+                <div class="timer">时间: <span id="timer">00:00</span></div>
+                <div class="mistakes">错误: <span id="mistakes">0</span>/3</div>
+            </div>
+            
+            <div class="difficulty-selector">
+                <button class="difficulty-btn active" data-difficulty="easy">简单</button>
+                <button class="difficulty-btn" data-difficulty="medium">中等</button>
+                <button class="difficulty-btn" data-difficulty="hard">困难</button>
+            </div>
+            
+            <div class="sudoku-board" id="board">
+                <!-- 数独棋盘将通过JavaScript生成 -->
+            </div>
+            
+            <div class="number-pad">
+                <button class="number-btn" data-number="1">1</button>
+                <button class="number-btn" data-number="2">2</button>
+                <button class="number-btn" data-number="3">3</button>
+                <button class="number-btn" data-number="4">4</button>
+                <button class="action-btn" id="delete-btn">删除</button>
+                <button class="number-btn" data-number="5">5</button>
+                <button class="number-btn" data-number="6">6</button>
+                <button class="number-btn" data-number="7">7</button>
+                <button class="number-btn" data-number="8">8</button>
+                <button class="number-btn" data-number="9">9</button>
+            </div>
+            
+            <div class="game-controls">
+                <button class="control-btn hint" id="hint-btn">提示 (3/3)</button>
+                <button class="control-btn mark" id="mark-btn">标记</button>
+                <button class="control-btn" id="new-game-btn">新游戏</button>
+                <button class="control-btn" id="solve-btn">解题</button>
+            </div>
+            
+            <div class="game-stats">
+                <div>已用提示: <span id="hints-used">0</span>/3</div>
+                <div>标记模式: <span id="mark-status">关闭</span></div>
+            </div>
         </div>
-        <div class="leaderboard-list" id="leaderboard-list">
-            <!-- 排行榜内容将通过JavaScript生成 -->
+
+        <!-- 排行榜页面 -->
+        <div class="screen leaderboard-screen" id="leaderboard-screen">
+            <h1>排行榜</h1>
+            <div class="leaderboard-tabs">
+                <button class="leaderboard-tab active" data-difficulty="easy">简单</button>
+                <button class="leaderboard-tab" data-difficulty="medium">中等</button>
+                <button class="leaderboard-tab" data-difficulty="hard">困难</button>
+            </div>
+            <div class="leaderboard-list" id="leaderboard-list">
+                <!-- 排行榜内容将通过JavaScript生成 -->
+            </div>
+            <div class="btn-container">
+                <button class="btn" id="back-btn">返回</button>
+            </div>
         </div>
-        <button class="back-btn" id="back-btn">返回</button>
     </div>
 
     <!-- 完成弹窗 -->
@@ -715,8 +649,8 @@
             <p>你成功解决了这个数独谜题</p>
             <div class="completion-time">完成时间: <span id="completion-time">00:00</span></div>
             <div class="completion-buttons">
-                <button class="completion-btn completion-new-game" id="completion-new-game">新游戏</button>
-                <button class="completion-btn completion-home" id="completion-home">返回主页</button>
+                <button class="btn completion-new-game" id="completion-new-game">新游戏</button>
+                <button class="btn btn-secondary completion-home" id="completion-home">返回主页</button>
             </div>
         </div>
     </div>
@@ -773,7 +707,7 @@
             const completionNewGameBtn = document.getElementById('completion-new-game');
             const completionHomeBtn = document.getElementById('completion-home');
             
-            // 预定义的数独题目和答案 - 保留几个示例题目作为备用
+            // 预定义的数独题目和答案
             const puzzles = {
                 easy: {
                     puzzle: [
@@ -855,27 +789,27 @@
             // 开始游戏按钮事件
             startBtn.addEventListener('click', function() {
                 startScreen.style.display = 'none';
-                gameScreen.style.display = 'block';
+                gameScreen.style.display = 'flex';
                 initGame();
             });
             
             // 排行榜按钮事件
             leaderboardBtn.addEventListener('click', function() {
                 startScreen.style.display = 'none';
-                leaderboardScreen.style.display = 'block';
+                leaderboardScreen.style.display = 'flex';
                 updateLeaderboardDisplay('easy');
             });
             
             // 返回按钮事件
             backBtn.addEventListener('click', function() {
                 leaderboardScreen.style.display = 'none';
-                startScreen.style.display = 'block';
+                startScreen.style.display = 'flex';
             });
             
             // 主页按钮事件
             homeBtn.addEventListener('click', function() {
                 gameScreen.style.display = 'none';
-                startScreen.style.display = 'block';
+                startScreen.style.display = 'flex';
                 clearInterval(timerInterval);
             });
             
@@ -897,7 +831,7 @@
             completionHomeBtn.addEventListener('click', function() {
                 completionModal.style.display = 'none';
                 gameScreen.style.display = 'none';
-                startScreen.style.display = 'block';
+                startScreen.style.display = 'flex';
                 clearInterval(timerInterval);
             });
             
@@ -952,109 +886,15 @@
                 }
             }
             
-            // 自动生成数独题目
+            // 生成数独游戏
             function generateSudoku() {
-                // 生成完整的数独解决方案
-                solution = generateSolution();
-                
-                // 根据难度挖空单元格
-                initialBoard = JSON.parse(JSON.stringify(solution)); // 深拷贝
-                const emptyCells = getEmptyCellsByDifficulty();
-                
-                // 挖空单元格
-                for (let i = 0; i < emptyCells; i++) {
-                    let row, col;
-                    do {
-                        row = Math.floor(Math.random() * 9);
-                        col = Math.floor(Math.random() * 9);
-                    } while (initialBoard[row][col] === 0);
-                    
-                    initialBoard[row][col] = 0;
-                }
+                // 根据难度选择题目
+                const puzzleData = puzzles[currentDifficulty];
+                initialBoard = JSON.parse(JSON.stringify(puzzleData.puzzle));
+                solution = JSON.parse(JSON.stringify(puzzleData.solution));
                 
                 // 显示初始棋盘
                 displayBoard(initialBoard);
-            }
-            
-            // 根据难度获取需要挖空的单元格数量
-            function getEmptyCellsByDifficulty() {
-                switch(currentDifficulty) {
-                    case 'easy': return 30; // 简单难度保留51个数字
-                    case 'medium': return 40; // 中等难度保留41个数字
-                    case 'hard': return 50; // 困难难度保留31个数字
-                    default: return 30;
-                }
-            }
-            
-            // 生成完整的数独解决方案
-            function generateSolution() {
-                // 创建一个9x9的空数独
-                const board = Array(9).fill().map(() => Array(9).fill(0));
-                
-                // 使用回溯算法填充数独
-                solveSudoku(board);
-                
-                return board;
-            }
-            
-            // 数独求解算法（回溯法）
-            function solveSudoku(board) {
-                for (let row = 0; row < 9; row++) {
-                    for (let col = 0; col < 9; col++) {
-                        if (board[row][col] === 0) {
-                            // 随机尝试数字
-                            const numbers = shuffleArray([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-                            
-                            for (let num of numbers) {
-                                if (isValid(board, row, col, num)) {
-                                    board[row][col] = num;
-                                    
-                                    if (solveSudoku(board)) {
-                                        return true;
-                                    }
-                                    
-                                    board[row][col] = 0;
-                                }
-                            }
-                            return false;
-                        }
-                    }
-                }
-                return true;
-            }
-            
-            // 检查数字在指定位置是否有效
-            function isValid(board, row, col, num) {
-                // 检查行
-                for (let x = 0; x < 9; x++) {
-                    if (board[row][x] === num) return false;
-                }
-                
-                // 检查列
-                for (let x = 0; x < 9; x++) {
-                    if (board[x][col] === num) return false;
-                }
-                
-                // 检查3x3宫格
-                const startRow = Math.floor(row / 3) * 3;
-                const startCol = Math.floor(col / 3) * 3;
-                
-                for (let i = 0; i < 3; i++) {
-                    for (let j = 0; j < 3; j++) {
-                        if (board[startRow + i][startCol + j] === num) return false;
-                    }
-                }
-                
-                return true;
-            }
-            
-            // 随机打乱数组
-            function shuffleArray(array) {
-                for (let i = array.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [array[i], array[j]] = [array[j], array[i]];
-                }
-                return array;
             }
             
             // 显示棋盘
