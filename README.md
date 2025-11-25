@@ -114,7 +114,7 @@
             background-color: #2980b9;
         }
         
-        /* 游戏页面样式 - 优化为更大尺寸 */
+        /* 游戏页面样式 */
         .game-screen {
             display: none;
             background-color: white;
@@ -123,9 +123,6 @@
             padding: 15px;
             margin-bottom: 15px;
             width: 100%;
-            min-height: 90vh;
-            justify-content: space-between;
-            flex-direction: column;
         }
         
         .game-header {
@@ -152,6 +149,12 @@
             background-color: #f0f0f0;
         }
         
+        h1 {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
         .game-info {
             display: flex;
             justify-content: space-between;
@@ -169,8 +172,7 @@
             border-radius: 5px;
             overflow: hidden;
             width: 100%;
-            flex-grow: 1;
-            min-height: 50vh;
+            aspect-ratio: 1 / 1;
         }
         
         .cell {
@@ -178,7 +180,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: bold;
             cursor: pointer;
             position: relative;
@@ -224,7 +226,7 @@
         }
         
         .pencil-mark {
-            font-size: 0.6rem;
+            font-size: 0.5rem;
             color: #6c757d;
             line-height: 1;
             padding: 0 1px;
@@ -235,7 +237,7 @@
         .number-pad {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            grid-gap: 8px;
+            grid-gap: 6px;
             margin-bottom: 15px;
         }
         
@@ -247,11 +249,11 @@
             color: white;
             border: none;
             border-radius: 5px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
             cursor: pointer;
             transition: background-color 0.2s;
-            min-height: 50px;
+            min-height: 44px;
         }
         
         .number-btn:hover, .action-btn:hover {
@@ -278,20 +280,19 @@
         .game-controls {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            grid-gap: 10px;
-            margin-bottom: 15px;
+            grid-gap: 8px;
         }
         
         .control-btn {
-            padding: 14px;
+            padding: 12px;
             background-color: #34495e;
             color: white;
             border: none;
             border-radius: 5px;
-            font-size: 1rem;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: background-color 0.2s;
-            min-height: 50px;
+            min-height: 44px;
         }
         
         .control-btn:hover {
@@ -423,7 +424,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: bold;
             z-index: 1;
         }
@@ -522,26 +523,28 @@
                 font-size: 1.6rem;
             }
             
+            .game-header h1 {
+                font-size: 1.3rem;
+            }
+            
             .cell {
-                font-size: 1.2rem;
+                font-size: 1rem;
             }
             
             .cell-number {
-                font-size: 1.2rem;
+                font-size: 1rem;
             }
             
             .pencil-mark {
-                font-size: 0.5rem;
+                font-size: 0.45rem;
             }
             
             .number-btn, .action-btn {
-                font-size: 1.1rem;
-                min-height: 44px;
+                font-size: 1rem;
             }
             
             .control-btn {
-                font-size: 0.9rem;
-                min-height: 44px;
+                font-size: 0.85rem;
             }
             
             .game-info, .game-stats {
@@ -563,11 +566,11 @@
         
         @media (max-width: 360px) {
             .cell {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
             
             .cell-number {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
             
             .pencil-mark {
@@ -575,7 +578,7 @@
             }
             
             .number-btn, .action-btn {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
             
             .control-btn {
@@ -648,11 +651,12 @@
     <div class="game-screen" id="game-screen">
         <div class="game-header">
             <button class="home-btn" id="home-btn">主页</button>
-            <div class="game-info">
-                <div class="timer">时间: <span id="timer">00:00</span></div>
-                <div class="mistakes">错误: <span id="mistakes">0</span>/3</div>
-            </div>
             <div style="width: 44px;"></div> <!-- 占位符，保持布局平衡 -->
+        </div>
+        
+        <div class="game-info">
+            <div class="timer">时间: <span id="timer">00:00</span></div>
+            <div class="mistakes">错误: <span id="mistakes">0</span>/3</div>
         </div>
         
         <div class="sudoku-board" id="board">
@@ -846,7 +850,7 @@
             // 开始游戏按钮事件
             startBtn.addEventListener('click', function() {
                 startScreen.style.display = 'none';
-                gameScreen.style.display = 'flex';
+                gameScreen.style.display = 'block';
                 initGame();
             });
             
