@@ -20,13 +20,12 @@
             background-color: #f5f5f5;
             color: #333;
             line-height: 1.6;
-            padding: 10px;
+            padding: 8px;
             max-width: 100%;
             margin: 0 auto;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             overflow-x: hidden;
         }
         
@@ -172,7 +171,7 @@
             margin-bottom: 15px;
             border-radius: 5px;
             overflow: hidden;
-            max-width: 100%;
+            width: 100%;
             aspect-ratio: 1 / 1;
         }
         
@@ -185,7 +184,6 @@
             font-weight: bold;
             cursor: pointer;
             position: relative;
-            min-height: 30px;
         }
         
         .cell.prefilled {
@@ -531,7 +529,6 @@
             
             .cell {
                 font-size: 1rem;
-                min-height: 25px;
             }
             
             .cell-number {
@@ -654,8 +651,7 @@
     <div class="game-screen" id="game-screen">
         <div class="game-header">
             <button class="home-btn" id="home-btn">主页</button>
-            <h1>数独游戏</h1>
-            <div style="width: 44px;"></div> <!-- 占位符，保持标题居中 -->
+            <div style="width: 44px;"></div> <!-- 占位符，保持布局平衡 -->
         </div>
         
         <div class="game-info">
