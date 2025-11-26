@@ -20,7 +20,7 @@
             background-color: #f5f5f5;
             color: #333;
             line-height: 1.6;
-            padding: 8px;
+            padding: 5px;
             max-width: 100%;
             margin: 0 auto;
             min-height: 100vh;
@@ -34,9 +34,10 @@
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+            padding: 15px;
             text-align: center;
             width: 100%;
+            margin-top: 5px;
         }
         
         .start-screen h1 {
@@ -78,7 +79,7 @@
         
         .difficulty-btn {
             flex: 1;
-            padding: 10px;
+            padding: 12px;
             border: 1px solid #ddd;
             border-radius: 5px;
             background-color: #f8f9fa;
@@ -86,7 +87,8 @@
             font-weight: bold;
             cursor: pointer;
             transition: all 0.2s;
-            min-height: 44px;
+            min-height: 50px;
+            font-size: 1rem;
         }
         
         .difficulty-btn.active {
@@ -96,16 +98,16 @@
         }
         
         .start-btn {
-            padding: 12px 25px;
+            padding: 14px 25px;
             background-color: #3498db;
             color: white;
             border: none;
             border-radius: 5px;
-            font-size: 1rem;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: background-color 0.2s;
             margin-top: 10px;
-            min-height: 44px;
+            min-height: 50px;
             width: 100%;
             max-width: 200px;
         }
@@ -120,10 +122,10 @@
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 15px;
-            margin-bottom: 15px;
+            padding: 10px;
+            margin-bottom: 10px;
             width: 100%;
-            min-height: 90vh;
+            min-height: 95vh;
             justify-content: space-between;
             flex-direction: column;
         }
@@ -132,7 +134,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            padding: 0 5px;
         }
         
         .home-btn {
@@ -155,8 +158,10 @@
         .game-info {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            width: 100%;
+            padding: 0 5px;
         }
         
         .sudoku-board {
@@ -170,7 +175,7 @@
             overflow: hidden;
             width: 100%;
             aspect-ratio: 1 / 1;
-            max-width: 500px;
+            max-width: 100%;
             margin-left: auto;
             margin-right: auto;
         }
@@ -180,7 +185,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: bold;
             cursor: pointer;
             position: relative;
@@ -239,6 +244,7 @@
             grid-template-columns: repeat(5, 1fr);
             grid-gap: 8px;
             margin-bottom: 15px;
+            padding: 0 5px;
         }
         
         .number-btn, .action-btn {
@@ -249,11 +255,11 @@
             color: white;
             border: none;
             border-radius: 5px;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: bold;
             cursor: pointer;
             transition: background-color 0.2s;
-            min-height: 50px;
+            min-height: 55px;
         }
         
         .number-btn:hover, .action-btn:hover {
@@ -282,10 +288,11 @@
             grid-template-columns: repeat(2, 1fr);
             grid-gap: 10px;
             margin-bottom: 15px;
+            padding: 0 5px;
         }
         
         .control-btn {
-            padding: 14px;
+            padding: 15px;
             background-color: #34495e;
             color: white;
             border: none;
@@ -293,7 +300,7 @@
             font-size: 1rem;
             cursor: pointer;
             transition: background-color 0.2s;
-            min-height: 50px;
+            min-height: 55px;
         }
         
         .control-btn:hover {
@@ -334,79 +341,82 @@
             display: flex;
             justify-content: space-between;
             margin-top: 10px;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             color: #6c757d;
+            padding: 0 5px;
         }
         
-        /* 排行榜样式 */
-        .leaderboard-screen {
+        /* 游戏记录样式 */
+        .records-screen {
             display: none;
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+            padding: 15px;
             text-align: center;
             width: 100%;
+            margin-top: 5px;
         }
         
-        .leaderboard-screen h1 {
+        .records-screen h1 {
             color: #2c3e50;
             font-size: 1.8rem;
             margin-bottom: 15px;
         }
         
-        .leaderboard-tabs {
+        .records-tabs {
             display: flex;
             margin-bottom: 15px;
             border-bottom: 1px solid #ddd;
         }
         
-        .leaderboard-tab {
+        .records-tab {
             flex: 1;
-            padding: 10px;
+            padding: 12px;
             background: none;
             border: none;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 1rem;
             transition: all 0.2s;
-            min-height: 44px;
+            min-height: 50px;
         }
         
-        .leaderboard-tab.active {
+        .records-tab.active {
             border-bottom: 3px solid #3498db;
             color: #3498db;
             font-weight: bold;
         }
         
-        .leaderboard-list {
+        .records-list {
             text-align: left;
             margin-bottom: 15px;
             max-height: 300px;
             overflow-y: auto;
         }
         
-        .leaderboard-item {
-            padding: 10px;
+        .records-item {
+            padding: 12px;
             border-bottom: 1px solid #eee;
             display: flex;
             justify-content: space-between;
+            font-size: 1rem;
         }
         
-        .leaderboard-item:nth-child(odd) {
+        .records-item:nth-child(odd) {
             background-color: #f8f9fa;
         }
         
         .back-btn {
-            padding: 12px 25px;
+            padding: 14px 25px;
             background-color: #3498db;
             color: white;
             border: none;
             border-radius: 5px;
-            font-size: 1rem;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: background-color 0.2s;
             margin-top: 10px;
-            min-height: 44px;
+            min-height: 50px;
             width: 100%;
             max-width: 200px;
         }
@@ -425,7 +435,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: bold;
             z-index: 1;
         }
@@ -512,15 +522,15 @@
         /* 移动端特定样式 */
         @media (max-width: 480px) {
             body {
-                padding: 5px;
+                padding: 3px;
                 justify-content: flex-start;
             }
             
-            .start-screen, .game-screen, .leaderboard-screen {
-                padding: 15px;
+            .start-screen, .game-screen, .records-screen {
+                padding: 10px;
             }
             
-            .start-screen h1, .leaderboard-screen h1 {
+            .start-screen h1, .records-screen h1 {
                 font-size: 1.6rem;
             }
             
@@ -529,11 +539,11 @@
             }
             
             .cell {
-                font-size: 1.3rem;
+                font-size: 1.4rem;
             }
             
             .cell-number {
-                font-size: 1.3rem;
+                font-size: 1.4rem;
             }
             
             .pencil-mark {
@@ -541,17 +551,18 @@
             }
             
             .number-btn, .action-btn {
-                font-size: 1.2rem;
-                min-height: 44px;
+                font-size: 1.3rem;
+                min-height: 50px;
             }
             
             .control-btn {
                 font-size: 0.9rem;
-                min-height: 44px;
+                min-height: 50px;
+                padding: 12px;
             }
             
             .game-info, .game-stats {
-                font-size: 0.75rem;
+                font-size: 0.9rem;
             }
             
             .completion-content {
@@ -569,11 +580,11 @@
         
         @media (max-width: 360px) {
             .cell {
-                font-size: 1.1rem;
+                font-size: 1.3rem;
             }
             
             .cell-number {
-                font-size: 1.1rem;
+                font-size: 1.3rem;
             }
             
             .pencil-mark {
@@ -581,24 +592,30 @@
             }
             
             .number-btn, .action-btn {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
+                min-height: 48px;
             }
             
             .control-btn {
-                font-size: 0.8rem;
+                font-size: 0.85rem;
                 padding: 10px;
+            }
+            
+            .difficulty-btn, .start-btn, .back-btn {
+                min-height: 48px;
+                font-size: 0.95rem;
             }
         }
         
         /* 横屏优化 */
         @media (max-height: 500px) and (orientation: landscape) {
             body {
-                padding: 5px;
+                padding: 3px;
                 justify-content: flex-start;
             }
             
             .game-screen {
-                padding: 10px;
+                padding: 8px;
             }
             
             .sudoku-board {
@@ -608,6 +625,10 @@
             
             .game-controls {
                 grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .number-pad {
+                grid-template-columns: repeat(10, 1fr);
             }
         }
         
@@ -647,7 +668,7 @@
             <button class="difficulty-btn" data-difficulty="hard">困难</button>
         </div>
         <button class="start-btn" id="start-btn">开始游戏</button>
-        <button class="start-btn" id="leaderboard-btn" style="background-color: #9b59b6; margin-left: 0; margin-top: 10px;">排行榜</button>
+        <button class="start-btn" id="records-btn" style="background-color: #9b59b6; margin-left: 0; margin-top: 10px;">游戏记录</button>
     </div>
 
     <!-- 游戏页面 -->
@@ -691,16 +712,16 @@
         </div>
     </div>
 
-    <!-- 排行榜页面 -->
-    <div class="leaderboard-screen" id="leaderboard-screen">
-        <h1>排行榜</h1>
-        <div class="leaderboard-tabs">
-            <button class="leaderboard-tab active" data-difficulty="easy">简单</button>
-            <button class="leaderboard-tab" data-difficulty="medium">中等</button>
-            <button class="leaderboard-tab" data-difficulty="hard">困难</button>
+    <!-- 游戏记录页面 -->
+    <div class="records-screen" id="records-screen">
+        <h1>游戏记录</h1>
+        <div class="records-tabs">
+            <button class="records-tab active" data-difficulty="easy">简单</button>
+            <button class="records-tab" data-difficulty="medium">中等</button>
+            <button class="records-tab" data-difficulty="hard">困难</button>
         </div>
-        <div class="leaderboard-list" id="leaderboard-list">
-            <!-- 排行榜内容将通过JavaScript生成 -->
+        <div class="records-list" id="records-list">
+            <!-- 游戏记录内容将通过JavaScript生成 -->
         </div>
         <button class="back-btn" id="back-btn">返回</button>
     </div>
@@ -724,9 +745,9 @@
             // 获取页面元素
             const startScreen = document.getElementById('start-screen');
             const gameScreen = document.getElementById('game-screen');
-            const leaderboardScreen = document.getElementById('leaderboard-screen');
+            const recordsScreen = document.getElementById('records-screen');
             const startBtn = document.getElementById('start-btn');
-            const leaderboardBtn = document.getElementById('leaderboard-btn');
+            const recordsBtn = document.getElementById('records-btn');
             const backBtn = document.getElementById('back-btn');
             const homeBtn = document.getElementById('home-btn');
             
@@ -742,7 +763,7 @@
             let maxHints = 3;
             let markMode = false;
             let pencilMarks = {}; // 存储标记 {cellIndex: [marked numbers]}
-            let leaderboard = {
+            let records = {
                 easy: [],
                 medium: [],
                 hard: []
@@ -761,8 +782,8 @@
             const markButton = document.getElementById('mark-btn');
             const hintsUsedElement = document.getElementById('hints-used');
             const markStatusElement = document.getElementById('mark-status');
-            const leaderboardTabs = document.querySelectorAll('.leaderboard-tab');
-            const leaderboardList = document.getElementById('leaderboard-list');
+            const recordsTabs = document.querySelectorAll('.records-tab');
+            const recordsList = document.getElementById('records-list');
             
             // 完成弹窗相关元素
             const completionModal = document.getElementById('completion-modal');
@@ -770,8 +791,8 @@
             const completionNewGameBtn = document.getElementById('completion-new-game');
             const completionHomeBtn = document.getElementById('completion-home');
             
-            // 加载排行榜数据
-            loadLeaderboard();
+            // 加载游戏记录数据
+            loadRecords();
             
             // 开始游戏按钮事件
             startBtn.addEventListener('click', function() {
@@ -780,16 +801,16 @@
                 initGame();
             });
             
-            // 排行榜按钮事件
-            leaderboardBtn.addEventListener('click', function() {
+            // 游戏记录按钮事件
+            recordsBtn.addEventListener('click', function() {
                 startScreen.style.display = 'none';
-                leaderboardScreen.style.display = 'block';
-                updateLeaderboardDisplay('easy');
+                recordsScreen.style.display = 'block';
+                updateRecordsDisplay('easy');
             });
             
             // 返回按钮事件
             backBtn.addEventListener('click', function() {
-                leaderboardScreen.style.display = 'none';
+                recordsScreen.style.display = 'none';
                 startScreen.style.display = 'block';
             });
             
@@ -812,12 +833,12 @@
                 });
             });
             
-            // 排行榜标签切换事件
-            leaderboardTabs.forEach(tab => {
+            // 游戏记录标签切换事件
+            recordsTabs.forEach(tab => {
                 tab.addEventListener('click', function() {
-                    leaderboardTabs.forEach(t => t.classList.remove('active'));
+                    recordsTabs.forEach(t => t.classList.remove('active'));
                     this.classList.add('active');
-                    updateLeaderboardDisplay(this.dataset.difficulty);
+                    updateRecordsDisplay(this.dataset.difficulty);
                 });
             });
             
@@ -1201,8 +1222,8 @@
                 // 设置完成时间
                 completionTimeElement.textContent = timerElement.textContent;
                 
-                // 保存到排行榜
-                saveToLeaderboard();
+                // 保存到游戏记录
+                saveToRecords();
                 
                 // 显示弹窗
                 completionModal.style.display = 'flex';
@@ -1390,41 +1411,41 @@
                 timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
             }
             
-            // 加载排行榜数据
-            function loadLeaderboard() {
-                const savedLeaderboard = localStorage.getItem('sudokuLeaderboard');
-                if (savedLeaderboard) {
-                    leaderboard = JSON.parse(savedLeaderboard);
+            // 加载游戏记录数据
+            function loadRecords() {
+                const savedRecords = localStorage.getItem('sudokuRecords');
+                if (savedRecords) {
+                    records = JSON.parse(savedRecords);
                 }
             }
             
-            // 保存排行榜数据
-            function saveLeaderboard() {
-                localStorage.setItem('sudokuLeaderboard', JSON.stringify(leaderboard));
+            // 保存游戏记录数据
+            function saveRecords() {
+                localStorage.setItem('sudokuRecords', JSON.stringify(records));
             }
             
-            // 保存到排行榜
-            function saveToLeaderboard() {
+            // 保存到游戏记录
+            function saveToRecords() {
                 const currentTime = timerElement.textContent;
                 const timeInSeconds = convertTimeToSeconds(currentTime);
                 
-                // 添加到排行榜
-                leaderboard[currentDifficulty].push({
+                // 添加到游戏记录
+                records[currentDifficulty].push({
                     time: currentTime,
                     seconds: timeInSeconds,
                     date: new Date().toLocaleDateString()
                 });
                 
                 // 按时间排序
-                leaderboard[currentDifficulty].sort((a, b) => a.seconds - b.seconds);
+                records[currentDifficulty].sort((a, b) => a.seconds - b.seconds);
                 
                 // 只保留前10名
-                if (leaderboard[currentDifficulty].length > 10) {
-                    leaderboard[currentDifficulty] = leaderboard[currentDifficulty].slice(0, 10);
+                if (records[currentDifficulty].length > 10) {
+                    records[currentDifficulty] = records[currentDifficulty].slice(0, 10);
                 }
                 
                 // 保存到本地存储
-                saveLeaderboard();
+                saveRecords();
             }
             
             // 将时间字符串转换为秒数
@@ -1433,23 +1454,23 @@
                 return minutes * 60 + seconds;
             }
             
-            // 更新排行榜显示
-            function updateLeaderboardDisplay(difficulty) {
-                leaderboardList.innerHTML = '';
+            // 更新游戏记录显示
+            function updateRecordsDisplay(difficulty) {
+                recordsList.innerHTML = '';
                 
-                if (leaderboard[difficulty].length === 0) {
-                    leaderboardList.innerHTML = '<div class="leaderboard-item">暂无记录</div>';
+                if (records[difficulty].length === 0) {
+                    recordsList.innerHTML = '<div class="records-item">暂无记录</div>';
                     return;
                 }
                 
-                leaderboard[difficulty].forEach((record, index) => {
+                records[difficulty].forEach((record, index) => {
                     const item = document.createElement('div');
-                    item.className = 'leaderboard-item';
+                    item.className = 'records-item';
                     item.innerHTML = `
                         <div>${index + 1}. ${record.time}</div>
                         <div>${record.date}</div>
                     `;
-                    leaderboardList.appendChild(item);
+                    recordsList.appendChild(item);
                 });
             }
         });
