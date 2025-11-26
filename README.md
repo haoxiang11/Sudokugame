@@ -116,14 +116,14 @@
             background-color: #2980b9;
         }
         
-        /* 游戏页面样式 - 优化为更大尺寸 */
+        /* 游戏页面样式 - 进一步增大尺寸 */
         .game-screen {
             display: none;
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 10px;
-            margin-bottom: 10px;
+            padding: 8px;
+            margin-bottom: 8px;
             width: 100%;
             min-height: 95vh;
             justify-content: space-between;
@@ -134,8 +134,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 10px;
-            padding: 0 5px;
+            margin-bottom: 8px;
+            padding: 0 2px;
         }
         
         .home-btn {
@@ -158,10 +158,10 @@
         .game-info {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-size: 1rem;
             width: 100%;
-            padding: 0 5px;
+            padding: 0 2px;
         }
         
         .sudoku-board {
@@ -170,7 +170,7 @@
             grid-gap: 2px;
             background-color: #333;
             border: 2px solid #333;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             border-radius: 5px;
             overflow: hidden;
             width: 100%;
@@ -185,7 +185,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: bold;
             cursor: pointer;
             position: relative;
@@ -231,7 +231,7 @@
         }
         
         .pencil-mark {
-            font-size: 0.7rem;
+            font-size: 0.8rem;
             color: #6c757d;
             line-height: 1;
             padding: 0 1px;
@@ -242,9 +242,9 @@
         .number-pad {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            grid-gap: 8px;
-            margin-bottom: 15px;
-            padding: 0 5px;
+            grid-gap: 6px;
+            margin-bottom: 12px;
+            padding: 0 2px;
         }
         
         .number-btn, .action-btn {
@@ -255,11 +255,11 @@
             color: white;
             border: none;
             border-radius: 5px;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: bold;
             cursor: pointer;
             transition: background-color 0.2s;
-            min-height: 55px;
+            min-height: 60px;
         }
         
         .number-btn:hover, .action-btn:hover {
@@ -286,9 +286,9 @@
         .game-controls {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            grid-gap: 10px;
-            margin-bottom: 15px;
-            padding: 0 5px;
+            grid-gap: 8px;
+            margin-bottom: 12px;
+            padding: 0 2px;
         }
         
         .control-btn {
@@ -300,7 +300,7 @@
             font-size: 1rem;
             cursor: pointer;
             transition: background-color 0.2s;
-            min-height: 55px;
+            min-height: 60px;
         }
         
         .control-btn:hover {
@@ -340,10 +340,10 @@
         .game-stats {
             display: flex;
             justify-content: space-between;
-            margin-top: 10px;
+            margin-top: 8px;
             font-size: 0.9rem;
             color: #6c757d;
-            padding: 0 5px;
+            padding: 0 2px;
         }
         
         /* 游戏记录样式 */
@@ -435,7 +435,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: bold;
             z-index: 1;
         }
@@ -539,25 +539,25 @@
             }
             
             .cell {
-                font-size: 1.4rem;
+                font-size: 1.6rem;
             }
             
             .cell-number {
-                font-size: 1.4rem;
+                font-size: 1.6rem;
             }
             
             .pencil-mark {
-                font-size: 0.6rem;
+                font-size: 0.7rem;
             }
             
             .number-btn, .action-btn {
-                font-size: 1.3rem;
-                min-height: 50px;
+                font-size: 1.4rem;
+                min-height: 55px;
             }
             
             .control-btn {
                 font-size: 0.9rem;
-                min-height: 50px;
+                min-height: 55px;
                 padding: 12px;
             }
             
@@ -580,20 +580,20 @@
         
         @media (max-width: 360px) {
             .cell {
-                font-size: 1.3rem;
+                font-size: 1.5rem;
             }
             
             .cell-number {
-                font-size: 1.3rem;
+                font-size: 1.5rem;
             }
             
             .pencil-mark {
-                font-size: 0.5rem;
+                font-size: 0.6rem;
             }
             
             .number-btn, .action-btn {
-                font-size: 1.2rem;
-                min-height: 48px;
+                font-size: 1.3rem;
+                min-height: 52px;
             }
             
             .control-btn {
@@ -615,11 +615,11 @@
             }
             
             .game-screen {
-                padding: 8px;
+                padding: 6px;
             }
             
             .sudoku-board {
-                margin-bottom: 10px;
+                margin-bottom: 8px;
                 max-height: 50vh;
             }
             
