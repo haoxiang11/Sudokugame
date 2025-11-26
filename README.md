@@ -114,7 +114,7 @@
             background-color: #2980b9;
         }
         
-        /* 游戏页面样式 - 优化为更宽尺寸 */
+        /* 游戏页面样式 - 优化为更大尺寸 */
         .game-screen {
             display: none;
             background-color: white;
@@ -123,6 +123,9 @@
             padding: 15px;
             margin-bottom: 15px;
             width: 100%;
+            min-height: 90vh;
+            justify-content: space-between;
+            flex-direction: column;
         }
         
         .game-header {
@@ -159,17 +162,17 @@
         .sudoku-board {
             display: grid;
             grid-template-columns: repeat(9, 1fr);
-            grid-gap: 1px;
+            grid-gap: 2px;
             background-color: #333;
             border: 2px solid #333;
             margin-bottom: 15px;
             border-radius: 5px;
             overflow: hidden;
             width: 100%;
+            aspect-ratio: 1 / 1;
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
-            aspect-ratio: 1 / 1;
         }
         
         .cell {
@@ -177,7 +180,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: bold;
             cursor: pointer;
             position: relative;
@@ -223,7 +226,7 @@
         }
         
         .pencil-mark {
-            font-size: 0.6rem;
+            font-size: 0.7rem;
             color: #6c757d;
             line-height: 1;
             padding: 0 1px;
@@ -231,19 +234,11 @@
             text-align: center;
         }
         
-        .game-controls-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            max-width: 500px;
-            margin: 0 auto;
-            width: 100%;
-        }
-        
         .number-pad {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             grid-gap: 8px;
+            margin-bottom: 15px;
         }
         
         .number-btn, .action-btn {
@@ -254,7 +249,7 @@
             color: white;
             border: none;
             border-radius: 5px;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: bold;
             cursor: pointer;
             transition: background-color 0.2s;
@@ -286,6 +281,7 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             grid-gap: 10px;
+            margin-bottom: 15px;
         }
         
         .control-btn {
@@ -429,7 +425,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: bold;
             z-index: 1;
         }
@@ -528,20 +524,24 @@
                 font-size: 1.6rem;
             }
             
+            .sudoku-board {
+                max-width: 100%;
+            }
+            
             .cell {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
             }
             
             .cell-number {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
             }
             
             .pencil-mark {
-                font-size: 0.5rem;
+                font-size: 0.6rem;
             }
             
             .number-btn, .action-btn {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
                 min-height: 44px;
             }
             
@@ -569,19 +569,19 @@
         
         @media (max-width: 360px) {
             .cell {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
             
             .cell-number {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
             
             .pencil-mark {
-                font-size: 0.4rem;
+                font-size: 0.5rem;
             }
             
             .number-btn, .action-btn {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
             
             .control-btn {
@@ -665,31 +665,29 @@
             <!-- 数独棋盘将通过JavaScript生成 -->
         </div>
         
-        <div class="game-controls-container">
-            <div class="number-pad">
-                <button class="number-btn" data-number="1">1</button>
-                <button class="number-btn" data-number="2">2</button>
-                <button class="number-btn" data-number="3">3</button>
-                <button class="number-btn" data-number="4">4</button>
-                <button class="action-btn" id="delete-btn">删除</button>
-                <button class="number-btn" data-number="5">5</button>
-                <button class="number-btn" data-number="6">6</button>
-                <button class="number-btn" data-number="7">7</button>
-                <button class="number-btn" data-number="8">8</button>
-                <button class="number-btn" data-number="9">9</button>
-            </div>
-            
-            <div class="game-controls">
-                <button class="control-btn hint" id="hint-btn">提示 (3/3)</button>
-                <button class="control-btn mark" id="mark-btn">标记</button>
-                <button class="control-btn" id="new-game-btn">新游戏</button>
-                <button class="control-btn" id="solve-btn">解题</button>
-            </div>
-            
-            <div class="game-stats">
-                <div>已用提示: <span id="hints-used">0</span>/3</div>
-                <div>标记模式: <span id="mark-status">关闭</span></div>
-            </div>
+        <div class="number-pad">
+            <button class="number-btn" data-number="1">1</button>
+            <button class="number-btn" data-number="2">2</button>
+            <button class="number-btn" data-number="3">3</button>
+            <button class="number-btn" data-number="4">4</button>
+            <button class="action-btn" id="delete-btn">删除</button>
+            <button class="number-btn" data-number="5">5</button>
+            <button class="number-btn" data-number="6">6</button>
+            <button class="number-btn" data-number="7">7</button>
+            <button class="number-btn" data-number="8">8</button>
+            <button class="number-btn" data-number="9">9</button>
+        </div>
+        
+        <div class="game-controls">
+            <button class="control-btn hint" id="hint-btn">提示 (3/3)</button>
+            <button class="control-btn mark" id="mark-btn">标记</button>
+            <button class="control-btn" id="new-game-btn">新游戏</button>
+            <button class="control-btn" id="solve-btn">解题</button>
+        </div>
+        
+        <div class="game-stats">
+            <div>已用提示: <span id="hints-used">0</span>/3</div>
+            <div>标记模式: <span id="mark-status">关闭</span></div>
         </div>
     </div>
 
@@ -772,89 +770,13 @@
             const completionNewGameBtn = document.getElementById('completion-new-game');
             const completionHomeBtn = document.getElementById('completion-home');
             
-            // 预定义的数独题目和答案 - 保留几个示例题目作为备用
-            const puzzles = {
-                easy: {
-                    puzzle: [
-                        [5, 3, 0, 0, 7, 0, 0, 0, 0],
-                        [6, 0, 0, 1, 9, 5, 0, 0, 0],
-                        [0, 9, 8, 0, 0, 0, 0, 6, 0],
-                        [8, 0, 0, 0, 6, 0, 0, 0, 3],
-                        [4, 0, 0, 8, 0, 3, 0, 0, 1],
-                        [7, 0, 0, 0, 2, 0, 0, 0, 6],
-                        [0, 6, 0, 0, 0, 0, 2, 8, 0],
-                        [0, 0, 0, 4, 1, 9, 0, 0, 5],
-                        [0, 0, 0, 0, 8, 0, 0, 7, 9]
-                    ],
-                    solution: [
-                        [5, 3, 4, 6, 7, 8, 9, 1, 2],
-                        [6, 7, 2, 1, 9, 5, 3, 4, 8],
-                        [1, 9, 8, 3, 4, 2, 5, 6, 7],
-                        [8, 5, 9, 7, 6, 1, 4, 2, 3],
-                        [4, 2, 6, 8, 5, 3, 7, 9, 1],
-                        [7, 1, 3, 9, 2, 4, 8, 5, 6],
-                        [9, 6, 1, 5, 3, 7, 2, 8, 4],
-                        [2, 8, 7, 4, 1, 9, 6, 3, 5],
-                        [3, 4, 5, 2, 8, 6, 1, 7, 9]
-                    ]
-                },
-                medium: {
-                    puzzle: [
-                        [0, 2, 0, 6, 0, 8, 0, 0, 0],
-                        [5, 8, 0, 0, 0, 9, 7, 0, 0],
-                        [0, 0, 0, 0, 4, 0, 0, 0, 0],
-                        [3, 7, 0, 0, 0, 0, 5, 0, 0],
-                        [6, 0, 0, 0, 0, 0, 0, 0, 4],
-                        [0, 0, 8, 0, 0, 0, 0, 1, 3],
-                        [0, 0, 0, 0, 2, 0, 0, 0, 0],
-                        [0, 0, 9, 8, 0, 0, 0, 3, 6],
-                        [0, 0, 0, 3, 0, 6, 0, 9, 0]
-                    ],
-                    solution: [
-                        [1, 2, 3, 6, 7, 8, 9, 4, 5],
-                        [5, 8, 4, 2, 3, 9, 7, 6, 1],
-                        [9, 6, 7, 1, 4, 5, 3, 2, 8],
-                        [3, 7, 2, 4, 6, 1, 5, 8, 9],
-                        [6, 9, 1, 5, 8, 3, 2, 7, 4],
-                        [4, 5, 8, 7, 9, 2, 6, 1, 3],
-                        [8, 3, 6, 9, 2, 4, 1, 5, 7],
-                        [2, 1, 9, 8, 5, 7, 4, 3, 6],
-                        [7, 4, 5, 3, 1, 6, 8, 9, 2]
-                    ]
-                },
-                hard: {
-                    puzzle: [
-                        [8, 0, 0, 0, 0, 0, 0, 0, 0],
-                        [0, 0, 3, 6, 0, 0, 0, 0, 0],
-                        [0, 7, 0, 0, 9, 0, 2, 0, 0],
-                        [0, 5, 0, 0, 0, 7, 0, 0, 0],
-                        [0, 0, 0, 0, 4, 5, 7, 0, 0],
-                        [0, 0, 0, 1, 0, 0, 0, 3, 0],
-                        [0, 0, 1, 0, 0, 0, 0, 6, 8],
-                        [0, 0, 8, 5, 0, 0, 0, 1, 0],
-                        [0, 9, 0, 0, 0, 0, 4, 0, 0]
-                    ],
-                    solution: [
-                        [8, 1, 2, 7, 5, 3, 6, 4, 9],
-                        [9, 4, 3, 6, 8, 2, 1, 7, 5],
-                        [6, 7, 5, 4, 9, 1, 2, 8, 3],
-                        [1, 5, 4, 2, 3, 7, 8, 9, 6],
-                        [3, 6, 9, 8, 4, 5, 7, 2, 1],
-                        [2, 8, 7, 1, 6, 9, 5, 3, 4],
-                        [5, 2, 1, 9, 7, 4, 3, 6, 8],
-                        [4, 3, 8, 5, 2, 6, 9, 1, 7],
-                        [7, 9, 6, 3, 1, 8, 4, 5, 2]
-                    ]
-                }
-            };
-            
             // 加载排行榜数据
             loadLeaderboard();
             
             // 开始游戏按钮事件
             startBtn.addEventListener('click', function() {
                 startScreen.style.display = 'none';
-                gameScreen.style.display = 'block';
+                gameScreen.style.display = 'flex';
                 initGame();
             });
             
@@ -963,28 +885,90 @@
                 }
             }
             
-            // 自动生成数独题目
+            // 生成数独题目
             function generateSudoku() {
-                // 生成完整的数独解决方案
+                // 生成完整解
                 solution = generateSolution();
                 
-                // 根据难度挖空单元格
-                initialBoard = JSON.parse(JSON.stringify(solution)); // 深拷贝
-                const emptyCells = getEmptyCellsByDifficulty();
+                // 创建初始棋盘
+                initialBoard = JSON.parse(JSON.stringify(solution));
                 
-                // 挖空单元格
-                for (let i = 0; i < emptyCells; i++) {
-                    let row, col;
-                    do {
-                        row = Math.floor(Math.random() * 9);
-                        col = Math.floor(Math.random() * 9);
-                    } while (initialBoard[row][col] === 0);
+                // 根据难度挖空
+                const emptyCells = getEmptyCellsByDifficulty();
+                const positions = [];
+                
+                // 创建所有可能的位置列表
+                for (let i = 0; i < 9; i++) {
+                    for (let j = 0; j < 9; j++) {
+                        positions.push([i, j]);
+                    }
+                }
+                
+                // 随机打乱位置
+                shuffleArray(positions);
+                
+                // 尝试挖空每个位置，但确保有唯一解
+                let removed = 0;
+                for (let i = 0; i < positions.length && removed < emptyCells; i++) {
+                    const [row, col] = positions[i];
+                    const temp = initialBoard[row][col];
                     
+                    // 如果已经是空的，跳过
+                    if (temp === 0) continue;
+                    
+                    // 尝试挖空
                     initialBoard[row][col] = 0;
+                    
+                    // 检查是否有唯一解
+                    if (hasUniqueSolution(JSON.parse(JSON.stringify(initialBoard)))) {
+                        removed++;
+                    } else {
+                        // 如果没有唯一解，恢复这个数字
+                        initialBoard[row][col] = temp;
+                    }
                 }
                 
                 // 显示初始棋盘
                 displayBoard(initialBoard);
+            }
+            
+            // 检查数独是否有唯一解
+            function hasUniqueSolution(board) {
+                let solutions = 0;
+                
+                function solve() {
+                    for (let row = 0; row < 9; row++) {
+                        for (let col = 0; col < 9; col++) {
+                            if (board[row][col] === 0) {
+                                for (let num = 1; num <= 9; num++) {
+                                    if (isValid(board, row, col, num)) {
+                                        board[row][col] = num;
+                                        
+                                        if (solve()) {
+                                            // 如果已经找到一个解，继续寻找第二个解
+                                            if (solutions >= 1) {
+                                                return true;
+                                            }
+                                        }
+                                        
+                                        board[row][col] = 0;
+                                    }
+                                }
+                                return false;
+                            }
+                        }
+                    }
+                    
+                    // 找到一个解
+                    solutions++;
+                    return true;
+                }
+                
+                // 开始求解
+                solve();
+                
+                // 返回是否有唯一解
+                return solutions === 1;
             }
             
             // 根据难度获取需要挖空的单元格数量
