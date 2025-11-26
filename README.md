@@ -20,7 +20,7 @@
             background-color: #f5f5f5;
             color: #333;
             line-height: 1.6;
-            padding: 5px;
+            padding: 3px;
             max-width: 100%;
             margin: 0 auto;
             min-height: 100vh;
@@ -34,52 +34,52 @@
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 15px;
+            padding: 12px;
             text-align: center;
             width: 100%;
-            margin-top: 5px;
+            margin-top: 3px;
         }
         
         .start-screen h1 {
             color: #2c3e50;
             font-size: 1.8rem;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         
         .rules {
             text-align: left;
-            margin: 15px 0;
-            padding: 12px;
+            margin: 12px 0;
+            padding: 10px;
             background-color: #f8f9fa;
             border-radius: 8px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
         
         .rules h2 {
             color: #3498db;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             text-align: center;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
         
         .rules ul {
-            padding-left: 18px;
-            margin-bottom: 10px;
+            padding-left: 16px;
+            margin-bottom: 8px;
         }
         
         .rules li {
-            margin-bottom: 6px;
+            margin-bottom: 5px;
         }
         
         .difficulty-selector {
-            margin: 15px 0;
+            margin: 12px 0;
             display: flex;
-            gap: 8px;
+            gap: 6px;
         }
         
         .difficulty-btn {
             flex: 1;
-            padding: 12px;
+            padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
             background-color: #f8f9fa;
@@ -87,8 +87,8 @@
             font-weight: bold;
             cursor: pointer;
             transition: all 0.2s;
-            min-height: 50px;
-            font-size: 1rem;
+            min-height: 45px;
+            font-size: 0.95rem;
         }
         
         .difficulty-btn.active {
@@ -98,18 +98,18 @@
         }
         
         .start-btn {
-            padding: 14px 25px;
+            padding: 12px 20px;
             background-color: #3498db;
             color: white;
             border: none;
             border-radius: 5px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             cursor: pointer;
             transition: background-color 0.2s;
-            margin-top: 10px;
-            min-height: 50px;
+            margin-top: 8px;
+            min-height: 45px;
             width: 100%;
-            max-width: 200px;
+            max-width: 180px;
         }
         
         .start-btn:hover {
@@ -122,8 +122,8 @@
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 8px;
-            margin-bottom: 8px;
+            padding: 5px;
+            margin-bottom: 5px;
             width: 100%;
             min-height: 95vh;
             justify-content: space-between;
@@ -134,21 +134,21 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             padding: 0 2px;
         }
         
         .home-btn {
             background: none;
             border: none;
-            font-size: 1rem;
+            font-size: 0.95rem;
             cursor: pointer;
             color: #3498db;
-            padding: 8px 12px;
+            padding: 6px 10px;
             border-radius: 5px;
             transition: background-color 0.2s;
-            min-height: 44px;
-            min-width: 44px;
+            min-height: 40px;
+            min-width: 40px;
         }
         
         .home-btn:hover {
@@ -158,8 +158,8 @@
         .game-info {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 8px;
-            font-size: 1rem;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
             width: 100%;
             padding: 0 2px;
         }
@@ -167,10 +167,10 @@
         .sudoku-board {
             display: grid;
             grid-template-columns: repeat(9, 1fr);
-            grid-gap: 2px;
+            grid-gap: 1px;
             background-color: #333;
             border: 2px solid #333;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             border-radius: 5px;
             overflow: hidden;
             width: 100%;
@@ -185,7 +185,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             font-weight: bold;
             cursor: pointer;
             position: relative;
@@ -242,8 +242,8 @@
         .number-pad {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            grid-gap: 6px;
-            margin-bottom: 12px;
+            grid-gap: 5px;
+            margin-bottom: 8px;
             padding: 0 2px;
         }
         
@@ -259,7 +259,7 @@
             font-weight: bold;
             cursor: pointer;
             transition: background-color 0.2s;
-            min-height: 60px;
+            min-height: 55px;
         }
         
         .number-btn:hover, .action-btn:hover {
@@ -286,21 +286,21 @@
         .game-controls {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            grid-gap: 8px;
-            margin-bottom: 12px;
+            grid-gap: 6px;
+            margin-bottom: 8px;
             padding: 0 2px;
         }
         
         .control-btn {
-            padding: 15px;
+            padding: 12px;
             background-color: #34495e;
             color: white;
             border: none;
             border-radius: 5px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             cursor: pointer;
             transition: background-color 0.2s;
-            min-height: 60px;
+            min-height: 55px;
         }
         
         .control-btn:hover {
@@ -340,8 +340,8 @@
         .game-stats {
             display: flex;
             justify-content: space-between;
-            margin-top: 8px;
-            font-size: 0.9rem;
+            margin-top: 5px;
+            font-size: 0.85rem;
             color: #6c757d;
             padding: 0 2px;
         }
@@ -352,33 +352,33 @@
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 15px;
+            padding: 12px;
             text-align: center;
             width: 100%;
-            margin-top: 5px;
+            margin-top: 3px;
         }
         
         .records-screen h1 {
             color: #2c3e50;
             font-size: 1.8rem;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         
         .records-tabs {
             display: flex;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             border-bottom: 1px solid #ddd;
         }
         
         .records-tab {
             flex: 1;
-            padding: 12px;
+            padding: 10px;
             background: none;
             border: none;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: all 0.2s;
-            min-height: 50px;
+            min-height: 45px;
         }
         
         .records-tab.active {
@@ -389,17 +389,17 @@
         
         .records-list {
             text-align: left;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             max-height: 300px;
             overflow-y: auto;
         }
         
         .records-item {
-            padding: 12px;
+            padding: 10px;
             border-bottom: 1px solid #eee;
             display: flex;
             justify-content: space-between;
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
         
         .records-item:nth-child(odd) {
@@ -407,18 +407,18 @@
         }
         
         .back-btn {
-            padding: 14px 25px;
+            padding: 12px 20px;
             background-color: #3498db;
             color: white;
             border: none;
             border-radius: 5px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             cursor: pointer;
             transition: background-color 0.2s;
-            margin-top: 10px;
-            min-height: 50px;
+            margin-top: 8px;
+            min-height: 45px;
             width: 100%;
-            max-width: 200px;
+            max-width: 180px;
         }
         
         .back-btn:hover {
@@ -435,12 +435,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             font-weight: bold;
             z-index: 1;
         }
         
-        /* 完成弹窗样式 */
+        /* 完成弹窗样式 - 增大尺寸 */
         .completion-modal {
             display: none;
             position: fixed;
@@ -458,47 +458,47 @@
         .completion-content {
             background-color: white;
             border-radius: 10px;
-            padding: 25px;
+            padding: 30px;
             text-align: center;
             width: 100%;
-            max-width: 350px;
+            max-width: 400px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
         
         .completion-content h2 {
             color: #2c3e50;
-            margin-bottom: 12px;
-            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
         }
         
         .completion-content p {
-            margin-bottom: 15px;
-            font-size: 1rem;
+            margin-bottom: 18px;
+            font-size: 1.1rem;
             color: #555;
         }
         
         .completion-time {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             font-weight: bold;
             color: #3498db;
-            margin: 12px 0;
+            margin: 15px 0;
         }
         
         .completion-buttons {
             display: flex;
             gap: 12px;
-            margin-top: 20px;
+            margin-top: 25px;
         }
         
         .completion-btn {
             flex: 1;
-            padding: 12px;
+            padding: 14px;
             border: none;
             border-radius: 5px;
-            font-size: 0.9rem;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.2s;
-            min-height: 44px;
+            min-height: 50px;
         }
         
         .completion-new-game {
@@ -522,12 +522,12 @@
         /* 移动端特定样式 */
         @media (max-width: 480px) {
             body {
-                padding: 3px;
+                padding: 2px;
                 justify-content: flex-start;
             }
             
             .start-screen, .game-screen, .records-screen {
-                padding: 10px;
+                padding: 8px;
             }
             
             .start-screen h1, .records-screen h1 {
@@ -539,11 +539,11 @@
             }
             
             .cell {
-                font-size: 1.6rem;
+                font-size: 2rem;
             }
             
             .cell-number {
-                font-size: 1.6rem;
+                font-size: 2rem;
             }
             
             .pencil-mark {
@@ -552,74 +552,88 @@
             
             .number-btn, .action-btn {
                 font-size: 1.4rem;
-                min-height: 55px;
+                min-height: 50px;
             }
             
             .control-btn {
                 font-size: 0.9rem;
-                min-height: 55px;
-                padding: 12px;
+                min-height: 50px;
+                padding: 10px;
             }
             
             .game-info, .game-stats {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
             
             .completion-content {
-                padding: 20px;
+                padding: 25px;
+                max-width: 350px;
             }
             
             .completion-content h2 {
-                font-size: 1.3rem;
+                font-size: 1.6rem;
             }
             
             .completion-time {
-                font-size: 1.1rem;
+                font-size: 1.3rem;
             }
         }
         
         @media (max-width: 360px) {
             .cell {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
             }
             
             .cell-number {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
             }
             
             .pencil-mark {
-                font-size: 0.6rem;
+                font-size: 0.65rem;
             }
             
             .number-btn, .action-btn {
                 font-size: 1.3rem;
-                min-height: 52px;
+                min-height: 48px;
             }
             
             .control-btn {
                 font-size: 0.85rem;
-                padding: 10px;
+                padding: 8px;
             }
             
             .difficulty-btn, .start-btn, .back-btn {
-                min-height: 48px;
-                font-size: 0.95rem;
+                min-height: 42px;
+                font-size: 0.9rem;
+            }
+            
+            .completion-content {
+                padding: 20px;
+                max-width: 320px;
+            }
+            
+            .completion-content h2 {
+                font-size: 1.4rem;
+            }
+            
+            .completion-time {
+                font-size: 1.2rem;
             }
         }
         
         /* 横屏优化 */
         @media (max-height: 500px) and (orientation: landscape) {
             body {
-                padding: 3px;
+                padding: 2px;
                 justify-content: flex-start;
             }
             
             .game-screen {
-                padding: 6px;
+                padding: 4px;
             }
             
             .sudoku-board {
-                margin-bottom: 8px;
+                margin-bottom: 6px;
                 max-height: 50vh;
             }
             
@@ -668,7 +682,7 @@
             <button class="difficulty-btn" data-difficulty="hard">困难</button>
         </div>
         <button class="start-btn" id="start-btn">开始游戏</button>
-        <button class="start-btn" id="records-btn" style="background-color: #9b59b6; margin-left: 0; margin-top: 10px;">游戏记录</button>
+        <button class="start-btn" id="records-btn" style="background-color: #9b59b6; margin-left: 0; margin-top: 8px;">游戏记录</button>
     </div>
 
     <!-- 游戏页面 -->
@@ -679,7 +693,7 @@
                 <div class="timer">时间: <span id="timer">00:00</span></div>
                 <div class="mistakes">错误: <span id="mistakes">0</span>/3</div>
             </div>
-            <div style="width: 44px;"></div> <!-- 占位符，保持布局平衡 -->
+            <div style="width: 40px;"></div> <!-- 占位符，保持布局平衡 -->
         </div>
         
         <div class="sudoku-board" id="board">
